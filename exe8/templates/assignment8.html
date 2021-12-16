@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Assignment 8
+{% endblock %}
+
+{% block tochen %}
+{{ super() }}
+    <h3> Full name: </h3>
+    <p> {% if flip %} {{ full_name | upper() }} {% else %} {{ full_name }} {% endif %}</p>
+    <h3> My hobbies: </h3>
+    <ul>
+        {% for hobby in hobbies | sort() %}
+            <li> {{ hobby }} </li>
+        {% endfor %}
+    </ul>
+    {% include 'comment.html' %}
+{% endblock %}

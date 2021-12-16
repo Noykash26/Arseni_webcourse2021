@@ -1,0 +1,131 @@
+:root{ /*defining color variables*/
+    --blue: #1690B3;
+    --light-blue: #8AAAB3;
+    --orange: #ED5E11;
+    --grey: #70716F;
+    --dark-grey: #333333;
+    --cream: #F2F0E6;
+}
+
+#resume {
+    display: grid;
+    max-width: 1200px;
+    width  : 390mm;
+    height: 70.5mm;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows   : 1fr 1fr 1fr 1fr;
+    box-shadow           : 0 5px 9px 0 rgba(0, 0, 0, 0.35);
+    grid-template-areas:
+        "name      name      connect"
+        "education education about"
+        "education education work"
+        "military  languages skills";
+    grid-gap: 1rem;
+}
+
+#grid-area {
+    padding: 1em 1em 1em 1em;
+    border : 1px black solid;
+}
+
+#name {
+    grid-area: name;
+    background-color: yellow;
+    height: 25vh;
+    width: 100%;
+    animation-name: blink;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {background-color: yellow;} /*start*/
+    25% {background-color: orangered;}
+    50% {background-color: red;}
+    75% {background-color: orangered;}
+    100% {background-color: yellow;} /*end*/
+}
+
+#connect {
+    grid-area: connect;
+    background-color: white;
+    height: 25vh;
+    width: 100%;
+
+}
+
+#education {
+    grid-area: education;
+    background-color: blue;
+    height: 50vh;
+    width: 100%;
+}
+
+#about {
+    grid-area: about;
+    background-color: wheat;
+    height: 25vh;
+    width: 100%;
+}
+
+#work {
+    grid-area: work;
+    background-color: pink;
+    height: 25vh;
+    width: 100%;
+}
+
+#military {
+    grid-area: military;
+    background-color: green;
+    height: 25vh;
+    width: 100%;
+}
+
+#languages {
+    grid-area: languages;
+    background-color: purple;
+    height: 25vh;
+    width: 100%;
+}
+
+#skills {
+    grid-area: skills;
+    background-color: brown;
+    height: 25vh;
+    width: 100%;
+}
+
+/*responsive web design*/
+@media only screen and (max-width:600px) {
+
+    #resume {
+        display: grid; /*insted of the default display, on THAT we'll put layered elements, ONW BIG DIV FOR ALL THE OTHER DIVS*/
+        grid-template-areas:
+        "name"
+        "connect"
+        "education"
+        "about"
+        "work"
+        "military"
+        "languages"
+        "skills"
+    }
+}
+
+/* align cv to center of page */
+@media only screen and (min-width:600px) {
+
+    #wrapper {
+        padding       : 0;
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+    }
+}
+
+img {
+    max-width: 100%; /* or any custom size */
+    height: 100%; 
+    object-fit: contain;
+}

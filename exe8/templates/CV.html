@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CV</title>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CV.css') }}">
+
+</head>
+<body <!--onload="return change_pic()"-->>
+    <div id="wrapper">
+            <div id="resume"> <!--an easy element to use, like a container-->
+                    <div id="name"> name
+                        <h1>Noy Kasher</h1>
+                        <h2>Industrial Engineer and managment </h2>
+                    </div>
+                    <div id="connect"> connect
+                        <form action=""> <!--לאן הדאטה צריך להגיע שזה בעצם כתובת URL לסרבר מסוים-->
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="input" required><br>
+                
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="input" required><br>
+                
+                            <label for="">Your comment</label><br>
+                            <textarea name="" id="textarea" cols="30" rows="5" class="input" required></textarea><br> <!--we can connect different object by "class"-->
+                
+                            <input type="submit" value="submit" onclick="return form_api()">
+                        </form>
+                    </div>
+                    <div id="about"> about </div>
+                    <div id="work"> work </div>
+                    <div id="education"> education 
+                        <img id="pic_animation" src="{{url_for('static', filename='1.jpg')}}" alt="">
+                    </div>
+                    <div id="skills"> skills </div>
+                    <div id="languages"> languages </div>
+                    <div id="military"> military </div>                    
+            </div> 
+    </div>
+    <script src="{{url_for('static', filename='CV.js')}}"></script>
+
+</body>
+</html>
