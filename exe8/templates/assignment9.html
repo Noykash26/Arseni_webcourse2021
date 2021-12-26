@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Assignment 9
+{% endblock %}
+
+{% block tochen %}
+<h1> Search form </h1>
+  <form action="/assignment9" method="GET"> <!-- action is the page we want to get after submit the form-->
+     Email: <input name="email" type="text">
+     <input type="submit" value="Search">
+  </form>
+
+{% if email == "" %}
+    <h3> List of users: </h3>
+    <ol>
+        {% for key, value in users.items() %}
+            <li> <h4 style="display: inline"> Full name: </h4> {{ value['full_name'] }} <h4 style="display: inline"> Email: </h4>{{ value['email'] }} </li>
+        {% endfor %}
+    </ol>
+{% elif email %}
+    <h3> requested user: </h3>
+    {% if email in users %}
+    <h4 style="display: inline"> Full name: </h4> {{ users[email]['full_name'] }} <h4 style="display: inline"> Email: </h4> {{ users[email]['email'] }}
+    {% else %}
+    <h4> User not found </h4>
+    {% endif %}
+{% endif %}
+
+{% if not session.user %}
+<h1> Registration form </h1>
+  <form action="/assignment9" method="POST"> <!-- action is the page we want to get after submit the form-->
+      Full name: <input name="full_name" type="text">
+      Email: <input name="email" type="text">
+     <input type="submit" value="Register">
+  </form>
+{% endif %}
+
+{% if session.user %}
+<br><input type="submit" value="Log out" onclick="location.href = '/logout'">
+{% endif %}
+{% endblock %}

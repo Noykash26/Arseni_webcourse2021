@@ -9,7 +9,8 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='CV.css') }}">
 
 </head>
-<body <!--onload="return change_pic()"-->>
+<body>
+{% include 'header.html' %}
     <div id="wrapper">
             <div id="resume"> <!--an easy element to use, like a container-->
                     <div id="name"> name
@@ -24,7 +25,7 @@
                             <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" class="input" required><br>
                 
-                            <label for="">Your comment</label><br>
+                            <label for="textarea">Your comment</label><br>
                             <textarea name="" id="textarea" cols="30" rows="5" class="input" required></textarea><br> <!--we can connect different object by "class"-->
                 
                             <input type="submit" value="submit" onclick="return form_api()">
