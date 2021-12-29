@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
+from interact_with_DB import interact_db
 
 app = Flask(__name__)
 app.secret_key = '1234' # this is for session, flask demands encryption
@@ -8,6 +9,7 @@ app.secret_key = '1234' # this is for session, flask demands encryption
 @app.route('/')
 def home_fun():
     return render_template('index.html')
+
 
 @app.route('/CV')
 def cv_fun():
@@ -54,6 +56,11 @@ def logout_fun():
     session['user'] = ""
     session['userinside'] = False
     return render_template('index.html')
+
+
+## assignment 10
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
 
 
 if __name__ == '__main__':
