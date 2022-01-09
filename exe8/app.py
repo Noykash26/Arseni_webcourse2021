@@ -73,36 +73,18 @@ def assignment11_fun():
     return render_template('assignment11.html')
 
 ## assignment 11
-@app.route('/assignment11/users', defaults={'user_id': -1})
-@app.route('/assignment11/users/<int:user_id>')
-def assignment11_users_fun(user_id):
-    if user_id == -1:
-        return_dict = {}
-        query = 'select * from users;'
-        users = interact_db(query=query, query_type='fetch')
-        for user in users:
-            return_dict[f'user_{user.id}'] = {
-                'status': 'success',
-                'id': user.id,
-                'name': user.name,
-                'email': user.email,
-            }
-    else:
-        query = 'select * from users where id=%s;' % user_id
-        users = interact_db(query=query, query_type='fetch')
-        if len(users) == 0:
-            return_dict = {
-                'status': 'failed',
-                'message': 'user not found'
-            }
-        else:
-            return_dict = {
-                'status': 'success',
-                'id': users[0].id,
-                'name': users[0].name,
-                'email': users[0].email,
-            }
-
+@app.route('/assignment11/users')
+def assignment11_users_fun():
+    return_dict = {}
+    query = 'select * from users;'
+    users = interact_db(query=query, query_type='fetch')
+    for user in users:
+        return_dict[f'user_{user.id}'] = {
+            'status': 'success',
+            'id': user.id,
+            'name': user.name,
+            'email': user.email,
+        }
     return jsonify(return_dict)
 
 
@@ -138,6 +120,45 @@ def req_backend():
             return render_template('requests_outer_source.html', user=user)
 
     return render_template('requests_outer_source.html')
+
+
+## assignment 12
+@app.route('/assignment12')
+def assignment12_func():
+    return render_template("assignment12.html")
+
+
+@app.route('/assignment12/restapi_users', defaults={'user_id': -1})
+@app.route('/assignment12/restapi_users/<int:user_id>')
+def get_user_func(user_id):
+    if user_id == -1:
+        return_dict = {}
+        query = 'select * from users;'
+        users = interact_db(query=query, query_type='fetch')
+        for user in users:
+            return_dict[f'user_{user.id}'] = {
+                'status': 'success',
+                'id': user.id,
+                'name': user.name,
+                'email': user.email,
+            }
+    else:
+        query = 'select * from users where id=%s;' % user_id
+        users = interact_db(query=query, query_type='fetch')
+        if len(users) == 0:
+            return_dict = {
+                'status': 'failed',
+                'message': 'user not found'
+            }
+        else:
+            return_dict = {
+                'status': 'success',
+                'id': users[0].id,
+                'name': users[0].name,
+                'email': users[0].email,
+            }
+
+    return jsonify(return_dict)
 
 
 if __name__ == '__main__':
